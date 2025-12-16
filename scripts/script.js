@@ -1,3 +1,11 @@
+// Menu data structure
+var menuLinks = [
+  { text: 'about', href: '/about' },
+  { text: 'catalog', href: '/catalog' },
+  { text: 'orders', href: '/orders' },
+  { text: 'account', href: '/account' },
+];
+
 // ============================================= PART ONE
 
 let mainEl = document.querySelector('main');
@@ -29,3 +37,12 @@ topMenuEl.classList.add('flex-around');
 
 // ============================================= PART THREE
 
+menuLinks.forEach(link => {
+  const aEl = document.createElement('a');
+
+  aEl.href = link.href;
+
+  aEl.textContent = link.text;
+
+  topMenuEl.appendChild(aEl);
+});
