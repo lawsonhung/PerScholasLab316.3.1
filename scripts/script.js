@@ -10,3 +10,5 @@ const h1Element = document.createElement('h1');
 h1Element.textContent = 'DOM Manipulation';
 fragment.appendChild(h1Element);
 mainEl.appendChild(fragment);
+
+mainEl.classList.add('flex-ctr');
