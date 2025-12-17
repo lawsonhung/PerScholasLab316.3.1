@@ -92,6 +92,7 @@ function handleTopMenu(e) {
   e.preventDefault();
 
   const target = e.target;
+  let linkObject;
 
   if (target.tagName !== 'A') return;
 
@@ -111,5 +112,14 @@ function handleTopMenu(e) {
   topMenuLinks.forEach(link => {
     if (link !== e.target)
       link.classList.remove('active');
+    else
+      linkObject = link.textContent;
   });
+
+  // Cache link object
+  menuLinks.forEach(link => {
+    if (link.text == linkObject)
+      linkObject = link;
+  });
+
 }
