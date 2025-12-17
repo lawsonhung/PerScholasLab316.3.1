@@ -14,7 +14,8 @@ const rootElement = document.documentElement;
 const computedStyles = window.getComputedStyle(rootElement);
 
 let mainBgColor = computedStyles.getPropertyValue('--main-bg');
-mainEl.style.backgroundColor = mainBgColor;
+mainEl.style.backgroundColor = 'var(--main-bg)';
+// mainEl.style.backgroundColor = mainBgColor;
 
 const fragment = document.createDocumentFragment();
 const h1Element = document.createElement('h1');
@@ -31,7 +32,8 @@ let topMenuEl = document.getElementById('top-menu');
 topMenuEl.style.height = '100%';
 
 let topMenuBgColor = computedStyles.getPropertyValue('--top-menu-bg');
-topMenuEl.style.backgroundColor = topMenuBgColor;
+// topMenuEl.style.backgroundColor = topMenuBgColor;
+topMenuEl.style.backgroundColor = 'var(--top-menu-bg)';
 
 topMenuEl.classList.add('flex-around');
 
@@ -39,7 +41,7 @@ topMenuEl.classList.add('flex-around');
 
 menuLinks.forEach(link => {
   const aEl = document.createElement('a');
-
+  
   aEl.href = link.href;
 
   aEl.textContent = link.text;
