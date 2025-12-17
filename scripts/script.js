@@ -97,6 +97,15 @@ function handleTopMenu(e) {
 
   console.log(target.textContent);
 
+// ============================================= PART FIVE
+
+  if (!target.classList.contains('active')) {
+    if (target.textContent !== 'about') 
+      subMenuEl.style.top = '100%';
+    else
+      subMenuEl.style.top = '0';
+  }
+
   target.classList.toggle('active');
 
   topMenuLinks.forEach(link => {
