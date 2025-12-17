@@ -91,7 +91,16 @@ topMenuEl.addEventListener('click', handleTopMenu)
 function handleTopMenu(e) {
   e.preventDefault();
 
-  if (e.target.tagName !== 'A') return;
+  const target = e.target;
 
-  console.log(e.target);
+  if (target.tagName !== 'A') return;
+
+  console.log(target.textContent);
+
+  target.classList.toggle('active');
+
+  topMenuLinks.forEach(link => {
+    if (link !== e.target)
+      link.classList.remove('active');
+  });
 }
