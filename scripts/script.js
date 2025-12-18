@@ -110,6 +110,8 @@ function handleTopMenu(e) {
   if (!target.classList.contains('active')) {
     if (target.textContent !== 'about')
       subMenuEl.style.top = '100%';
+    else
+      mainEl.innerHTML = '<h1>About</h1>';
   } else
     subMenuEl.style.top = '0';
 
@@ -141,4 +143,26 @@ function buildSubMenu(subLinksArg) {
     anchorEl.textContent = link.text;
     subMenuEl.appendChild(anchorEl);
   });
+}
+
+subMenuEl.addEventListener('click', handleSubMenu);
+
+function handleSubMenu(e) {
+  e.preventDefault();
+
+  const target = e.target;
+
+  if (target.tagName !== 'A')
+    return;
+
+  console.log(target.textContent);
+
+  subMenuEl.style.top = '0';
+
+  topMenuLinks.forEach(link => {
+    if (link.tagName == 'A')
+      link.classList.remove('active');
+  });
+
+  mainEl.textContent = target.textContent;
 }
