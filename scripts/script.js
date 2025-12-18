@@ -7,21 +7,27 @@
 // ];
 
 var menuLinks = [
-  {text: 'about', href: '/about'},
-  {text: 'catalog', href: '#', subLinks: [
-    {text: 'all', href: '/catalog/all'},
-    {text: 'top selling', href: '/catalog/top'},
-    {text: 'search', href: '/catalog/search'},
-  ]},
-  {text: 'orders', href: '#' , subLinks: [
-    {text: 'new', href: '/orders/new'},
-    {text: 'pending', href: '/orders/pending'},
-    {text: 'history', href: '/orders/history'},
-  ]},
-  {text: 'account', href: '#', subLinks: [
-    {text: 'profile', href: '/account/profile'},
-    {text: 'sign out', href: '/account/signout'},
-  ]},
+  { text: 'about', href: '/about' },
+  {
+    text: 'catalog', href: '#', subLinks: [
+      { text: 'all', href: '/catalog/all' },
+      { text: 'top selling', href: '/catalog/top' },
+      { text: 'search', href: '/catalog/search' },
+    ]
+  },
+  {
+    text: 'orders', href: '#', subLinks: [
+      { text: 'new', href: '/orders/new' },
+      { text: 'pending', href: '/orders/pending' },
+      { text: 'history', href: '/orders/history' },
+    ]
+  },
+  {
+    text: 'account', href: '#', subLinks: [
+      { text: 'profile', href: '/account/profile' },
+      { text: 'sign out', href: '/account/signout' },
+    ]
+  },
 ];
 
 // ============================================= PART ONE
@@ -59,7 +65,7 @@ topMenuEl.classList.add('flex-around');
 
 menuLinks.forEach(link => {
   const aEl = document.createElement('a');
-  
+
   aEl.href = link.href;
 
   aEl.textContent = link.text;
@@ -98,13 +104,14 @@ function handleTopMenu(e) {
 
   console.log(target.textContent);
 
-// ============================================= PART FIVE
+  // ============================================= PART FIVE
 
+  // Show submenu if it's not 'about' and it's not currently active
   if (!target.classList.contains('active')) {
-    if (target.textContent !== 'about') 
+    if (target.textContent !== 'about')
       subMenuEl.style.top = '100%';
   } else
-      subMenuEl.style.top = '0';
+    subMenuEl.style.top = '0';
 
   target.classList.toggle('active');
 
@@ -123,4 +130,15 @@ function handleTopMenu(e) {
 
   console.log(linkObject)
 
+  buildSubMenu(linkObject.subLinks);
+}
+
+function buildSubMenu(subLinksArg) {
+  subMenuEl.textContent = '';
+
+  subLinksArg.forEach(link => {
+    const anchorEl = document.createElement('a');
+    anchorEl.textContent = link.text;
+    subMenuEl.appendChild(anchorEl);
+  });
 }
